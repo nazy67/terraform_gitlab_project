@@ -1,5 +1,5 @@
 resource "aws_instance" "project_ec2" {
-  depends_on             = [ aws_security_group.second_sg ]
+  depends_on             = [ aws_security_group.project_sg ]
   ami                    = "ami-0be2609ba883822ec"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [ aws_security_group.second_sg.id ]
@@ -9,7 +9,7 @@ resource "aws_instance" "project_ec2" {
     Environment = var.env 
   }
 }
-resource "aws_security_group" "second_sg" {
+resource "aws_security_group" "project_sg" {
   name        = "allow_22_80"
   description = "Allow TLS inbound traffic"
 
