@@ -2,7 +2,7 @@ resource "aws_instance" "project_ec2" {
   depends_on             = [ aws_security_group.project_sg ]
   ami                    = "ami-0be2609ba883822ec"
   instance_type          = "t2.micro"
-  vpc_security_group_ids = [ aws_security_group.second_sg.id ]
+  vpc_security_group_ids = [ aws_security_group.project_sg.id ]
   user_data = data.local_file.user_data.content
   tags = {
     Name        = "ec2_project"
