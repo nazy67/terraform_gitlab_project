@@ -37,6 +37,6 @@ resource "aws_security_group" "project_sg" {
   }
 
   tags = {
-    Name = "my_sg_22_80"
+    Name = "project_sg"
   }
 }
