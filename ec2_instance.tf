@@ -1,6 +1,6 @@
 resource "aws_instance" "project_ec2" {
   depends_on             = [ aws_security_group.project_sg ]
-  ami                    = "ami-0be2609ba883822ec"
+  ami                    = data.aws_ami.amazon_linux2.image_id
   instance_type          = "t2.micro"
   vpc_security_group_ids = [ aws_security_group.project_sg.id ]
   user_data = data.local_file.user_data.content
