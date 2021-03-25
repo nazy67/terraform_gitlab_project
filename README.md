@@ -3,5 +3,5 @@ terraform template which provisions an EC2 instance with security group in defau
 Before I wrote a terraform template I created manually step by step the process, using CentOS 7.6 droplet on Digital Ocean platform. After that all gets created on aws cloud platform.
 Project is still in process...
 
-## Usefule links
+## Useful links
 [git lab installation](https://about.gitlab.com/install/?version=ce#centos-7) 
