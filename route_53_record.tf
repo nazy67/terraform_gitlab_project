@@ -1,6 +1,7 @@
 data "aws_route53_zone" "my_record" {
-  name         = var.zone_name
-  public_zone = true
+  name        = var.zone_name
+  zone_id     = var.zone_id
+  public_zone = var.public_zone
 } 
 
 resource "aws_route53_record" "record" {
