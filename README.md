@@ -1,8 +1,11 @@
-### terraform_gitlab_project
-terraform template which provisions an EC2 instance with security group in default VPC with User Data. User Data will install git lab inside of the EC2 while it's bootstraping. 
-Before I wrote a terraform template I created manually step by step the process, using CentOS 7.6 droplet on Digital Ocean platform. After that all gets created on aws cloud platform.
+### Terraform_gitlab_project
 
-##Project is still in process...
+Terraform template which provisions an EC2 instance with security group in default VPC with User Data. User Data will install gitlab inside of the EC2 while it's booting. 
+
+
+## Project is still in process...
 
 ## Useful links
-[git lab installation](https://about.gitlab.com/install/?version=ce#centos-7) 
+[git lab installation](https://about.gitlab.com/install/?version=ce#centos-7)
+
+[What is GitLab and How To use It](https://www.simplilearn.com/tutorials/git-tutorial/what-is-gitlab#:~:text=GitLab%20is%20a%20web%2Dbased,management%20to%20monitoring%20and%20security.)
