@@ -4,7 +4,7 @@ data "aws_route53_zone" "my_record" {
 } 
 
 resource "aws_route53_record" "record" {
-  zone_id = aws_route53_zone.primary.zone_id
+  zone_id = data.aws_route53_zone.my_record.zone_id
   name    = "www.${data.aws_route53_zone.my_record.name}"
   type    = "A"
   ttl     = "300"
