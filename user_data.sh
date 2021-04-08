@@ -9,4 +9,4 @@ sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --permanent --add-service=https
 sudo systemctl reload firewalld
 curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
-sudo EXTERNAL_URL="https://www.example.com" yum install -y gitlab-ce
+sudo EXTERNAL_URL="https://www.nazydaisy.com" yum install -y gitlab-ce
