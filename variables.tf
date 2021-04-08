@@ -10,7 +10,7 @@ variable "tags" {
 variable "instance_type" {
   description = "type on the EC2 instance"
   type = string
-  default = "t2.micro"
+  default = "t2.medium"
 }
 
 variable "my_key"{
