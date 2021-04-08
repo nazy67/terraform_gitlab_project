@@ -1,4 +1,6 @@
-Ignore 
+#Ignore files:
 
 *providers.tf
 *variables.tf
+*terraform*
+*.terraform*

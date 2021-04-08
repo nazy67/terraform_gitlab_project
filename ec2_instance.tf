@@ -3,16 +3,13 @@ data "template_file" "user_data" {
 }
 
 resource "aws_instance" "project_ec2" {
-  depends_on             = [ aws_security_group.project_sg ]
+  depends_on             = [aws_security_group.project_sg]
   ami                    = data.aws_ami.amazon_linux2.image_id
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [ aws_security_group.project_sg.id ]
+  instance_type          = var.instance_type
+  vpc_security_group_ids = [aws_security_group.project_sg.id]
   user_data = data.template_file.user_data.rendered
   key_name = var.my_key
-  tags = {
-    Name        = "ec2_project"
-    Environment = var.env 
-  }
+  tags = var.tags
 }
 
 resource "aws_security_group" "project_sg" {
