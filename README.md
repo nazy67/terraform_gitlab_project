@@ -1,6 +1,6 @@
 ### Terraform GitLab Project on AWS EC2
 
-Terraform configuration file provisions an EC2 instance with Security group in default VPC with User Data. Data source user_data.sh will install gitlab inside of the EC2 while it's booting. Also there's Route 53 record will be provisioned for EC2 instance it's for GitLab. 
+Terraform configuration file provisions an EC2 instance with Security group in default VPC with User Data. Data source user_data.sh will install gitlab inside of the EC2 while booting. Also there's Route 53 record will be provisioned for EC2 instance it's for GitLab. 
 
 ### Requirements
 
@@ -42,11 +42,26 @@ GitLab strongly advises to install GitLab runners in a different machine, it's n
 
 Web browsers supported by GitLab are: Mozilla Firefox, Google Chrome, Choromium, Apple Safari, Microsoft Edge.
 
+Before we created a bash script for installing GitLab, all commands were run manually on CLI to check if commands given in official documentation are needed in our case. 
+```
+yum install -y curl policycoreutils-python perl
+
+curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+
+yum install -y gitlab-ce
+```
+
+To prepare our machine first we install recommended utilities after that our command curl gets the script form the given link and passes it to bash to run it, "-s" - means silence and "-S" - means show error even when "-s" is used. Now we are ready to install commutinty edition of GitLab.
+
+After the installing GitLab we need to configure our newly installed gitlab accound, for that we have to create a new user and password, because originally it was created with roots creadentials. 
+
 ## Useful links
 
-[GitLab Installation](https://about.gitlab.com/install/?version=ce#centos-7)
+[GitLab installation on CentOS 7](https://about.gitlab.com/install/?version=ce#centos-7)
 
-[What is GitLab and How To use It](https://www.simplilearn.com/tutorials/git-tutorial/what-is-gitlab#:~:text=GitLab%20is%20a%20web%2Dbased,management%20to%20monitoring%20and%20security.)
+[Installing GitLab on Amazon Web Services (AWS)](https://docs.gitlab.com/ee/install/aws/)
+
+[What is GitLab and How To use It](https://www.simplilearn.com/tutorials/git-tutorial/what-is-gitlab#:~:text=GitLab%20is%20a%20web%2Dbased,management%20to%20monitoring%20and%20security)
 
 [Requirements for installing GitLab](https://docs.gitlab.com/ee/install/requirements.html)
 
