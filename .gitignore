@@ -1,6 +1,5 @@
-#Ignore files:
+### Ignore files:
 
-*providers.tf
-*variables.tf
+*version.tf
 *terraform*
 *.terraform*
