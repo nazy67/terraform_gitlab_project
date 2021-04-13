@@ -1,6 +1,6 @@
 data "aws_route53_zone" "my_zone" {
-  name        = var.zone_name
-} 
+  name = var.zone_name
+}
 
 resource "aws_route53_record" "record" {
   zone_id = data.aws_route53_zone.my_zone.zone_id

@@ -55,11 +55,23 @@ To prepare our machine first we install recommended utilities after that our com
 
 After the installing GitLab we need to configure our newly installed gitlab accound, for that we have to create a new user and password, because originally it was created with roots creadentials. 
 
+To follow up on requirement the next options were chosen:
+
+- image id        = ami-0742b4e673072066f
+- instance type   = is t2.medium  (where CPU is 2GB and RAM 4GB memory)
+- ebs root volume = 8GB /dev/xvda (by default) 
+
+On AWS official documentation for the instance type, they recommend at least ```c5.xlarge```, which is sufficient to accomodate 100 users. Also in the link below you can find the AWS provided image ids.
+
 ## Useful links
 
 [GitLab installation on CentOS 7](https://about.gitlab.com/install/?version=ce#centos-7)
 
 [Installing GitLab on Amazon Web Services (AWS)](https://docs.gitlab.com/ee/install/aws/)
+
+[Install GitLab](https://docs.gitlab.com/ee/install/aws/#install-gitlab)
+
+[GitLab CE images provided by AWS](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Images:visibility=public-images;ownerAlias=782774275127;search=GitLab%20CE;sort=desc:name)
 
 [What is GitLab and How To use It](https://www.simplilearn.com/tutorials/git-tutorial/what-is-gitlab#:~:text=GitLab%20is%20a%20web%2Dbased,management%20to%20monitoring%20and%20security)
 

@@ -1,26 +1,24 @@
 variable "tags" {
-  type = map
-  
-  default = {
-      "Name" = "ec2_project"
-      "Environment" = "dev"
-  }
+  type = map(any)
+}
+
+variable "env" {
+  type = string
+  description = "environment"
 }
 
 variable "instance_type" {
   description = "type on the EC2 instance"
-  type = string
-  default = "t2.medium"
+  type        = string
 }
 
-variable "my_key"{
-  description = "my laptop's public key"
-  type = string
-  default = "Nazy'sMacKey"
+variable "my_key" {
+  description = "local laptop's public key"
+  type        = string
+
 }
 
 variable "zone_name" {
   description = "Name of route 53 zone"
   type        = string
-  default     = "nazydaisy.com."
 }
