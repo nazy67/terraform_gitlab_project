@@ -20,9 +20,9 @@ And doesn't support (we can still install Gitlab, but it's not supported):
 - Gentoo
 - macOS
 
-GitLab doesn't run on Microsoft Windows, it was developed for Linux-based operating systems. For more information about Operating system requirements you can check out ```Requirements for installing GitLab``` in the  link below.
+GitLab doesn't run on Microsoft Windows, it was developed for Linux-based operating systems. For more information about Operating system requirements you can check out more in [Requirements for installing GitLab](https://docs.gitlab.com/ee/install/requirements.html).
 
-After choosing Operatiing system we need to choose ```Software version```:
+After choosing Operatiing system we need to choose `Software version`:
 
 - Ruby versions for GitLab 13.6 (Ruby 2.7 and later is required)
 - Go versions (required Go version is 1.13)
@@ -30,19 +30,20 @@ After choosing Operatiing system we need to choose ```Software version```:
 - Starting from GitLab 12.9 (only support Node.js 10.13.0 or higher)
 - GitLab 13.0 and later requires Redis version 4.0 or higher.
 
-When we choose  hardware for GitLab there some ```Hardware requirements``` we have to follow. For installing GitLab it's important to as much free space as all our repositories combined to take. There few options of how we can manage our storage for GitLab, we can add more hard drives for flexibility, mounting hard drive when we need using logical volume management (LVM). We can also mount a volume that supports the nerwork file system (NFS) protocol, this storage can be located on a file server or on AWS Elastic Block storage (EBS) volume. 
+When we choose  hardware for GitLab there some `Hardware requirements` we have to follow. For installing GitLab it's important to have as much free space as all our repositories combined to take. There few options of how we can manage our storage for GitLab, we can add more hard drives for flexibility, mounting hard drive when we need using logical volume management (LVM). We can also mount a volume that supports the nerwork file system (NFS) protocol, this storage can be located on a file server or on AWS Elastic Block storage (EBS) volume. 
 
-The ```CPU requirements``` are depends on the numbers of users and expected workload, the minimum 4 cores of CPU supports 500 users, 8 cores supports 1000 users etc.
+The `CPU requirements` are depends on the numbers of users and expected workload, the minimum 4 cores of CPU supports 500 users, 8 cores supports 1000 users etc.
 
-```RAM requirements``` the minimum must be 4GB RAM to support 500 users for more users more RAM. Also it's recommended to have at least 2GB swap memory on your server.
+`RAM requirements` the minimum must be 4GB RAM to support 500 users for more users more RAM. Also it's recommended to have at least 2GB swap memory on your server.
 
-```Database```. PostgreSQL is the only supported database, which is bundled with Omnibus GitLab package. The server running PostgreSQL should have at least 5-10GB of storage available.
+`Database`. PostgreSQL is the only supported database, which is bundled with `Omnibus GitLab package`. The server running PostgreSQL should have at least 5-10GB of storage available.
 
 GitLab strongly advises to install GitLab runners in a different machine, it's not safe to install everything in a same machine for a security reasons, especially when you plan to use shell executor with GitLab runner. 
 
 Web browsers supported by GitLab are: Mozilla Firefox, Google Chrome, Choromium, Apple Safari, Microsoft Edge.
 
-Before we created a bash script for installing GitLab, all commands were run manually on CLI to check if commands given in official documentation are needed in our case. 
+Before we created a bash script for installing GitLab, all commands were run manually on CLI to check if commands given in official documentation are needed in our case.
+
 ```
 yum install -y curl policycoreutils-python perl
 
@@ -51,9 +52,13 @@ curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/scrip
 yum install -y gitlab-ce
 ```
 
-To prepare our machine first we install recommended utilities after that our command curl gets the script form the given link and passes it to bash to run it, "-s" - means silence and "-S" - means show error even when "-s" is used. Now we are ready to install commutinty edition of GitLab.
+To prepare our machine first we need to install recommended utilities, after that our command curl gets the script from a given link and passes it to bash to run it where, 
+- `s`  means silence
+- `S`  means show error even when "-s" is used.
+ 
+Now we are ready to install community edition of GitLab.
 
-After the installing GitLab we need to configure our newly installed gitlab accound, for that we have to create a new user and password, because originally it was created with roots creadentials. 
+After installing GitLab we need to configure our newly installed GitLab accound, for that we have to create a new user and password, because originally it was created with roots creadentials. 
 
 To follow up on requirement the next options were chosen:
 
@@ -61,7 +66,7 @@ To follow up on requirement the next options were chosen:
 - instance type   = is t2.medium  (where CPU is 2GB and RAM 4GB memory)
 - ebs root volume = 8GB /dev/xvda (by default) 
 
-On AWS official documentation for the instance type, they recommend at least ```c5.xlarge```, which is sufficient to accomodate 100 users. Also in the link below you can find the AWS provided image ids.
+On AWS official documentation for the instance type AWS recommends at least `c5.xlarge` to run a GitLab, which is sufficient to accomodate 100 users. Also in the link below you can find the AWS provided image ids.
 
 ## Useful links
 
