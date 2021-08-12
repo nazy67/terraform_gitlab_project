@@ -1,12 +1,26 @@
-output "ec2_public_ip" {
-  value = aws_instance.project_ec2.public_ip
+### GitLab server outputs
+output "glab_public_ip" {
+  value = aws_instance.gitlab_server.public_ip
 }
-output "sg_name" {
-  value = aws_security_group.project_sg.name
+output "glab_id" {
+  value = aws_instance.gitlab_server.id
 }
+output "glab_sg_id" {
+  value = aws_security_group.gitlab_sg.id
+}
+
+### GitLab route 53 outputs
 output "dns_name" {
   value = aws_route53_record.record.name
 }
 output "public_dns" {
-  value = aws_instance.project_ec2.public_dns
+  value = aws_instance.gitlab_server.public_dns
+}
+
+### GitLab ebs outputs
+output "gitlab_ebs_id" {
+  value = aws_ebs_volume.gitlab_ebs.id
+}
+output "gitlab_ebs_arn" {
+  value = aws_ebs_volume.gitlab_ebs.arn
 }

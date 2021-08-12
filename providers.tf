@@ -7,3 +7,8 @@ terraform {
     }
   }
 }
+
+### Default AWS Provider Region ###
+provider "aws" {
+  region  = var.aws_region
+}
