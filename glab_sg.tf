@@ -1,8 +1,12 @@
+### Gitlab security group
+
 resource "aws_security_group" "gitlab_sg" {
   name        = "gitlab_sg"
   description = "allow inbound traffic"
   tags        = var.glab_sg_tags
 }
+
+### GitLab security group ingress rules
 
 resource "aws_security_group_rule" "ingress" {
   for_each          = var.ingress
@@ -14,6 +18,8 @@ resource "aws_security_group_rule" "ingress" {
   cidr_blocks       = [each.value.cidr]
   security_group_id = aws_security_group.gitlab_sg.id
 }
+
+### GitLab security group egress rules
 
 resource "aws_security_group_rule" "egress" {
   type              = "egress"

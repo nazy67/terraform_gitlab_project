@@ -7,6 +7,7 @@ resource "aws_ebs_volume" "gitlab_ebs" {
 }
 
 ### GitLab EBS Volume Attachment
+
 resource "aws_volume_attachment" "ebs_attachment" {
    depends_on  = [aws_ebs_volume.gitlab_ebs]
    device_name = "/dev/xvdf"
