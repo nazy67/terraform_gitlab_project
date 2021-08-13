@@ -16,11 +16,3 @@ output "dns_name" {
 output "public_dns" {
   value = aws_instance.gitlab_server.public_dns
 }
-
-### GitLab ebs outputs
-output "gitlab_ebs_id" {
-  value = aws_ebs_volume.gitlab_ebs.id
-}
-output "gitlab_ebs_arn" {
-  value = aws_ebs_volume.gitlab_ebs.arn
-}
