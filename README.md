@@ -113,6 +113,41 @@ Confirm userpassword: password123
 
 Or by default, Omnibus GitLab automatically generates a password for the initial administrator user account (root) and stores it to /etc/gitlab/initial_root_password for at least 24 hours. For security reasons, after 24 hours, this file is automatically removed by the first gitlab-ctl reconfigure.
 
+Renewing certificate:
+
+Manual Let’s Encrypt Renewal
+
+Renew Let’s Encrypt certificates manually using one of the following commands:
+```
+sudo gitlab-ctl renew-le-certs
+```
+
+You can test automatic renewal for your certificates by running this command:
+```
+sudo certbot renew --dry-run
+```
+Or you can simply use the script 
+```
+sudo vi /etc/cron.daily/letsencrypt-renew
+```
+```
+#!/bin/sh
+if certbot renew > /var/log/letsencrypt/renew.log 2>&1 ; then
+   nginx -s reload
+fi
+exit
+```
+```
+sudo chmod +x /etc/cron.daily/letsencrypt-renew
+```
+```
+sudo crontab -e
+```
+```
+01 02,14 * * * /etc/cron.daily/letsencrypt-renew
+```
+
+
 ## Useful links
 
 1. [GitLab installation on CentOS 7](https://about.gitlab.com/install/?version=ce#centos-7)
@@ -126,3 +161,7 @@ Or by default, Omnibus GitLab automatically generates a password for the initial
 5. [What is GitLab and How To use It](https://www.simplilearn.com/tutorials/git-tutorial/what-is-gitlab#:~:text=GitLab%20is%20a%20web%2Dbased,management%20to%20monitoring%20and%20security)
 
 6. [Requirements for installing GitLab](https://docs.gitlab.com/ee/install/requirements.html)
+
+7. [firewall-cmd](https://firewalld.org/documentation/man-pages/firewall-cmd.html)
+
+8. [What is SELinux?](https://www.redhat.com/en/topics/linux/what-is-selinux)
