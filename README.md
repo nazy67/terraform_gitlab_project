@@ -1,6 +1,22 @@
-### Terraform GitLab Project on AWS EC2
+ ### What is Gitlab?
 
-Terraform configuration file provisions a GitLab server with Security group on default VPC's Public Subnet. With cloud-config we install GitLab, cloud-config files are special scripts designed to be run by the cloud-init process on the very first boot of a server. Also Route 53 record resource which will create A Record with my domain name for GitLab server. 
+GitLab is the open DevOps platform, delivered as a single application, that provides free open and private repositories, issue-following capabilities, and wikis. It is a complete DevOps platform that enables professionals to perform all the tasks in a project—from project planning and source code management to monitoring and security. Furthermore, it allows teams to collaborate and build better software.
+
+GitLab helps teams reduce product lifecycles and increase productivity, which in turn creates value for customers. The application doesn't require users to manage authorizations for each tool. If permissions are set once, then everyone in the organization has access to every component. GitLab's mission is to provide a place where everyone can contribute. To access more functionalities, customers can opt for the paid version of GitLab, starting at $4 per user, per month.
+
+#### History of GitLab.
+
+GitLab was originally a fully free and open-source software distributed under the MIT License. It was split into two distinct versions - GitLab CE (Community Edition) and GitLab EE (Enterprise Edition) in July 2013. GitLab EE was set under a restricted license but the source code remained publicly visible, whereas the GitLab CE licensing model remained unchanged. In 2017, GitLab announced that their code would become fully open-sourced under an MIT License. 
+
+#### Few Of Many Features of GitLab.
+
+GitLab has built-in Continuous Integration/Continuous Delivery, for free, no need to install it separately.   Built-in continuous integration and continuous delivery features make it seamless to go from a code change to a running pipeline. Use it to build, test, and deploy your website.
+
+Version control and repository management based on Git. GitLab has project management, issue tracking, and free private repository hosting to make it easier to plan and manage your projects.
+
+Development teams often estimate and record the amount of time it takes to complete specific tasks in their software projects. This process usually happens in an external tool. Time Tracking is built into GitLab so your team can easily estimate and record the time spent on issues and merge requests.
+
+GitLab supports Git LFS 2.0 with this feature you can manage large files such as audio, video and graphics files it has always been one of the shortcomings of Git. The general recommendation is to not have Git repositories larger than 1GB to preserve performance.
 
 ### Requirements
 
@@ -44,6 +60,10 @@ Web browsers supported by GitLab are: Mozilla Firefox, Google Chrome, Choromium,
 
 Before we created a cloud-config script for installing GitLab, all commands were run manually on CLI to check if commands given in official documentation are needed for our case.
 
+### Terraform GitLab Project
+
+Terraform configuration files provisions an EC2 instance with Security group on default VPC's Public Subnet. GitLab was installed with cloud-config which is a special scripts designed to be run by the cloud-init process on the very first boot of a server. Also Route 53 record resource which will create A Record with my domain name for GitLab server.
+
 ```
 #cloud-config
 
@@ -73,11 +93,9 @@ runcmd:
 - sudo hostnamectl set-hostname gitlab
 - curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash 
 - sudo EXTERNAL_URL="https://gitlab.nazydaisy.com" yum install -y gitlab-ce
-- sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
-- sudo firewall-cmd --zone=public --permanent --add-port=443/tcp
+- sudo firewall-cmd --zone=public --permanent --add-port={80/tcp,443/tcp}
 - sudo firewall-cmd --zone=public --permanent --add-service=https
-- sudo firewall-cmd --permanent --add-service=http
-- sudo firewall-cmd --permanent --add-service=https
+- sudo firewall-cmd --zone=public --permanent --add-service=http
 - sudo firewall-cmd --reload
 - sudo systemctl daemon-reload
 - sudo setsebool -P httpd_can_network_connect 1
@@ -111,7 +129,7 @@ Enter user password: password123
 Confirm userpassword: password123
 ```
 
-Or by default, Omnibus GitLab automatically generates a password for the initial administrator user account (root) and stores it to /etc/gitlab/initial_root_password for at least 24 hours. For security reasons, after 24 hours, this file is automatically removed by the first gitlab-ctl reconfigure.
+Or by default, Omnibus GitLab automatically generates a password for the initial administrator user account (root) and stores it to `/etc/gitlab/initial_root_password` for at least 24 hours. For security reasons, after 24 hours, this file is automatically removed by the first gitlab-ctl reconfigure.
 
 Renewing certificate:
 
