@@ -32,7 +32,7 @@ variable "ingress" {
   type        = map(map(any))
   description = "allow traffic on port 22 from listed IPs"
   default = {
-    1 = { from = 22, to = 22, protocol = "tcp", cidr = "0.0.0.0/0", desc = "allow ssh traffic to all" },
+    1 = { from = 22, to = 22, protocol = "tcp", cidr = "73.209.181.204/32", desc = "allow ssh traffic to all" },
     2 = { from = 80, to = 80, protocol = "tcp", cidr = "0.0.0.0/0", desc = "allow http traffic to all" },
     3 = { from = 443, to = 443, protocol = "tcp", cidr = "0.0.0.0/0", desc = "allow https traffic to all" },
   }
