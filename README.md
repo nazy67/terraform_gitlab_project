@@ -1,6 +1,5 @@
  ### What is Gitlab?
-
-GitLab is the open DevOps platform, delivered as a single application, that provides free open and private repositories, issue-following capabilities, and wikis. It is a complete DevOps platform that enables professionals to perform all the tasks in a project—from project planning and source code management to monitoring and security. Furthermore, it allows teams to collaborate and build better software.
+<img src="images/gitlab.png" alt="aws" width="100" height="100"> GitLab is the open DevOps platform, delivered as a single application, that provides free open and private repositories, issue-following capabilities, and wikis. It is a complete DevOps platform that enables professionals to perform all the tasks in a project—from project planning and source code management to monitoring and security. Furthermore, it allows teams to collaborate and build better software.
 
 GitLab helps teams reduce product lifecycles and increase productivity, which in turn creates value for customers. The application doesn't require users to manage authorizations for each tool. If permissions are set once, then everyone in the organization has access to every component. GitLab's mission is to provide a place where everyone can contribute. To access more functionalities, customers can opt for the paid version of GitLab, starting at $4 per user, per month.
 
